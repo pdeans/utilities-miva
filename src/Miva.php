@@ -156,8 +156,8 @@ class Miva
                             // If the key doesn't already exist in the results array, add it as a layer
                             // by setting the key to an empty array and the array index that follows it
                             if (!isset($result_ref[$key])) {
-                                $result_ref[$key] = array();
-                                $result_ref[$key][$res_array_index] = array();
+                                $result_ref[$key] = [];
+                                $result_ref[$key][$res_array_index] = [];
                             }
 
                             // Move the reference index deeper and continue to the next key
@@ -173,7 +173,7 @@ class Miva
                     // If the key doesn't already exist in the results array, add it as a layer
                     // by setting the key to an empty array
                     if (!isset($result_ref[$key])) {
-                        $result_ref[$key] = array();
+                        $result_ref[$key] = [];
                     }
 
                     // Move the reference deeper...
