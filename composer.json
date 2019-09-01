@@ -1,0 +1,22 @@
+{
+	"name": "pdeans/miva-utilities",
+	"type": "library",
+	"description": "A collection of helpful utility methods and functions for interacting with the Miva Merchant platform.",
+	"license": "MIT",
+	"keywords": ["utilities", "support", "Miva", "Miva Merchant"],
+	"authors": [
+		{
+			"name": "Patrick Stearns",
+			"email": "pdeans1986@gmail.com"
+		}
+	],
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"pdeans\\Utilities\\": "src"
+		},
+		"files": [
+			"src/miva_utilities.php"
+		]
+	}
+}
