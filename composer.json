@@ -1,24 +1,26 @@
 {
-	"name": "pdeans/utilities-miva",
-	"type": "library",
-	"description": "A collection of helpful utility methods and functions for interacting with the Miva Merchant platform.",
-	"license": "MIT",
-	"keywords": ["utilities", "support", "Miva", "Miva Merchant"],
-	"authors": [
-		{
-			"name": "Patrick Stearns",
-			"email": "pdeans1986@gmail.com"
-		}
-	],
-	"require": {
-		"php": "^7.0 || ^8.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"pdeans\\Utilities\\": "src"
-		},
-		"files": [
-			"src/miva_utilities.php"
-		]
-	}
+    "name": "pdeans/utilities-miva",
+    "type": "library",
+    "description": "A collection of helpful utility methods and functions for interacting with the Miva Merchant platform.",
+    "license": "MIT",
+    "keywords": ["utilities", "support", "Miva", "Miva Merchant"],
+    "authors": [
+        {
+            "name": "Patrick Stearns",
+            "email": "pdeans1986@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "pdeans\\Utilities\\": "src/"
+        },
+        "files": [
+            "src/miva_utilities.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
