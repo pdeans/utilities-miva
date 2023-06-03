@@ -2,14 +2,14 @@
 
 A collection of helpful utility methods and functions for interacting with the Miva Merchant platform.
 
-### Installation
+## Installation
 
 Install via [Composer](https://getcomposer.org/).
 
-```
-$ composer require pdeans/utilities-miva
+```shell
+composer require pdeans/utilities-miva
 ```
 
-### Usage
+## Usage
 
 Docs coming soon.
