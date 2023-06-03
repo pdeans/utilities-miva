@@ -5,12 +5,8 @@ use pdeans\Utilities\Miva;
 if (!function_exists('miva_deserialize_array')) {
     /**
      * Deserialize Miva data into an associative array
-     *
-     * @param string $mv_serialized_str
-     *
-     * @return array
      */
-    function miva_deserialize_array($mv_serialized_str)
+    function miva_deserialize_array(string $mv_serialized_str): array
     {
         return Miva::deserialize($mv_serialized_str);
     }
@@ -19,16 +15,13 @@ if (!function_exists('miva_deserialize_array')) {
 if (!function_exists('miva_generate_code')) {
     /**
      * Generate a Miva code value (ex: category code, product code, etc.)
-     *
-     * @param string  $subject
-     * @param integer $max_length
-     * @param string  $separator
-     * @param string  $case
-     *
-     * @return string
      */
-    function miva_generate_code($subject, $max_length = 50, $separator = '-', $case = 'lowercase')
-    {
+    function miva_generate_code(
+        string $subject,
+        int $max_length = 50,
+        string $separator = '-',
+        string $case = 'lowercase'
+    ): string {
         return Miva::createCode($subject, $max_length, $separator, $case);
     }
 }
@@ -36,13 +29,8 @@ if (!function_exists('miva_generate_code')) {
 if (!function_exists('miva_generate_login')) {
     /**
      * Create a customer login from an email address
-     *
-     * @param string  $email
-     * @param integer $max_length
-     *
-     * @return string
      */
-    function miva_generate_login($email, $max_length = 50)
+    function miva_generate_login(string $email, int $max_length = 50): string
     {
         return Miva::createLoginFromEmail($email, $max_length);
     }

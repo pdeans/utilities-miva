@@ -3,28 +3,19 @@
 namespace pdeans\Utilities;
 
 /**
- * Miva class
- *
  * Collection of helper methods specific to the Miva Merchant platform
  */
 class Miva
 {
     /**
      * Generate a Miva code value (ex: category code, product code, etc.)
-     *
-     * @param string  $subject
-     * @param integer $max_length
-     * @param string  $separator
-     * @param string  $case
-     *
-     * @return string
      */
     public static function createCode(
         string $subject,
         int $max_length = 50,
         string $separator = '-',
         string $case = ''
-    ) {
+    ): string {
         $code  = $subject;
         $case  = mb_strtolower($case);
         $flips = [];
@@ -39,14 +30,14 @@ class Miva
 
         // Convert all flips into separator
         foreach ($flips as $flip) {
-            $code = preg_replace('/['.preg_quote($flip).']+/u', $separator, $code);
+            $code = preg_replace('/[' . preg_quote($flip) . ']+/u', $separator, $code);
         }
 
         // Remove all characters that are not the separator, letters, numbers, or whitespace
-        $code = preg_replace('/[^'.preg_quote($separator).'\pL\pN\s]+/u', '', $code);
+        $code = preg_replace('/[^' . preg_quote($separator) . '\pL\pN\s]+/u', '', $code);
 
         // Replace all separator characters and whitespace by a single separator
-        $code = preg_replace('/['.preg_quote($separator).'\s]+/u', $separator, $code);
+        $code = preg_replace('/[' . preg_quote($separator) . '\s]+/u', $separator, $code);
 
         // Limit to max length setting
         $code = substr($code, 0, $max_length);
@@ -63,25 +54,17 @@ class Miva
 
     /**
      * Create a customer login from an email address
-     *
-     * @param string  $email
-     * @param integer $max_length
-     *
      * @return string
      */
-    public static function createLoginFromEmail(string $email, int $max_length = 50)
+    public static function createLoginFromEmail(string $email, int $max_length = 50): string
     {
         return substr(preg_replace('/[^[:alnum:]]/u', '', strstr($email, '@', true)), 0, $max_length);
     }
 
     /**
      * Deserialize Miva data into an associative array
-     *
-     * @param string $serialized_str
-     *
-     * @return array
      */
-    public static function deserialize(string $serialized_str)
+    public static function deserialize(string $serialized_str): array
     {
         $result = [];
 
@@ -116,7 +99,7 @@ class Miva
                         // Decode url-encoding and set the value of the array element
                         $result[$mv_array_key][($mv_array_index - 1)] = urldecode($target_arr[1]);
                         continue;
-                    } else if (!$mv_array_key && $mv_array_index) { // The key has an index only (Ex: [1]).
+                    } elseif (!$mv_array_key && $mv_array_index) { // The key has an index only (Ex: [1]).
                         // Decode url-encoding and set the value of the array element
                         $result[($mv_array_index - 1)] = urldecode($target_arr[1]);
                         continue;
@@ -163,7 +146,7 @@ class Miva
                             // Move the reference index deeper and continue to the next key
                             $result_ref = &$result_ref[$key][$res_array_index];
                             continue;
-                        } else if (!$mv_array_key && $mv_array_index) {
+                        } elseif (!$mv_array_key && $mv_array_index) {
                             // Move the reference to point to the index and continue to the next key
                             $result_ref = &$result_ref[($mv_array_index - 1)];
                             continue;
@@ -192,13 +175,8 @@ class Miva
 
     /**
      * Determine if subject string is a Miva array
-     *
-     * @param string  $subject
-     * @param boolean $return_matches
-     *
-     * @return boolean|array
      */
-    protected static function isMivaArray(string $subject, bool $return_matches = false)
+    protected static function isMivaArray(string $subject, bool $return_matches = false): bool|array
     {
         preg_match('/(\w+)?\[(\d+)\]/', $subject, $matches);
 
